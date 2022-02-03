@@ -16,9 +16,9 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            //if(markdown.substring(openParen + 1, closeParen).contains("https")) {
+            if(markdown.substring(openParen + 1, closeParen).contains("https")) {
                 //toReturn.add(markdown.substring(openParen + 1, closeParen));
-            //}
+            }
             
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
