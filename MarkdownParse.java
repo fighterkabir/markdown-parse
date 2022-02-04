@@ -13,12 +13,17 @@ public class MarkdownParse {
         int count = 0;
         while(currentIndex < markdown.length()) {
             int nextOpenBracket = markdown.indexOf("[", currentIndex);
+            if(nextOpenBracket == -1) {
+                System.out.println("Invalid input");
+                return null;
+            }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if(markdown.substring(openParen + 1, closeParen).contains("https")) {
+        
+            //if(markdown.substring(openParen + 1, closeParen).contains("https")) {
                 //toReturn.add(markdown.substring(openParen + 1, closeParen));
-            }
+            //}
             
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
