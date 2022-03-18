@@ -94,7 +94,7 @@ public class MarkdownParseTest {
         Path fileName = Path.of("testfileLabsnip1.md");
         String contents = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(contents);
-        assertEquals(List.of("url.com", "google.com", "google.com", "ucsd.edu"), links);
+        assertEquals(List.of("`google.com", "google.com", "ucsd.edu"), links);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class MarkdownParseTest {
         Path fileName = Path.of("testfileLabsnip2.md");
         String contents = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(contents);
-        assertEquals(List.of("a.com", "b.com", "a.com", "example.com"), links);
+        assertEquals(List.of("a.com", "a.com(())", "example.com"), links);
     }
 
     @Test
@@ -110,8 +110,6 @@ public class MarkdownParseTest {
         Path fileName = Path.of("testfileLabsnip3.md");
         String contents = Files.readString(fileName);
         ArrayList<String> links = MarkdownParse.getLinks(contents);
-        assertEquals(List.of("https://www.twitter.com", 
-            "https://ucsd-cse15l-w22.github.io/", 
-                "github.com", "https://cse.ucsd.edu/"), links);
+        assertEquals(List.of("https://ucsd-cse15l-w22.github.io"), links);
     }
 }
